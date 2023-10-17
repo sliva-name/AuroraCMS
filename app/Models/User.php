@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @property $skin
  * @property $balance
+ * @property $last_login_ip
  */
 class User extends Authenticatable
 {
@@ -28,7 +29,9 @@ class User extends Authenticatable
         'email',
         'password',
         'balance',
-        'skin'
+        'skin',
+        'last_login_at',
+        'last_login_ip',
     ];
 
     /**

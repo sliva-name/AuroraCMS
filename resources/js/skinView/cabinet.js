@@ -17,27 +17,28 @@ let skinViewer = new skinview3d.SkinViewer({
 })
 skinViewer.loadPanorama('images/panorama.jpg')
 
-document.getElementById('rotate_skin').addEventListener('click', () => {
-    skinViewer.autoRotate = !skinViewer.autoRotate
-    this.classList.toggle('bg-indigo-600')
-})
-document.getElementById('pause_skin').addEventListener('click', () => {
-    skinViewer.animation.paused = !skinViewer.animation.paused
-    this.classList.toggle('bg-indigo-600')
-})
-document.getElementById('animate_run_skin').addEventListener('click', () => {
-    if(skinViewer.animation instanceof skinview3d.WalkingAnimation) {
-        skinViewer.animation = new skinview3d.RunningAnimation()
-    }
-    else if (skinViewer.animation instanceof skinview3d.RunningAnimation){
-        skinViewer.animation = new skinview3d.FlyingAnimation()
-    }
-    else {
-        skinViewer.animation = new skinview3d.WalkingAnimation()
-    }
+// document.getElementById('rotate_skin').addEventListener('click', () => {
+//     skinViewer.autoRotate = !skinViewer.autoRotate
+//     this.classList.toggle('bg-indigo-600')
+// })
+// document.getElementById('pause_skin').addEventListener('click', () => {
+//     skinViewer.animation.paused = !skinViewer.animation.paused
+//     this.classList.toggle('bg-indigo-600')
+// })
+// document.getElementById('animate_run_skin').addEventListener('click', () => {
+//     if(skinViewer.animation instanceof skinview3d.WalkingAnimation) {
+//         skinViewer.animation = new skinview3d.RunningAnimation()
+//     }
+//     else if (skinViewer.animation instanceof skinview3d.RunningAnimation){
+//         skinViewer.animation = new skinview3d.FlyingAnimation()
+//     }
+//     else {
+//         skinViewer.animation = new skinview3d.WalkingAnimation()
+//     }
+//
+//     skinViewer.animation.speed = 0.6
+// })
 
-    skinViewer.animation.speed = 0.6
-})
 
 const ajax = (url, formElement, callback) => {
     const formData = new FormData(formElement);

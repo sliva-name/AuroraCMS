@@ -20,6 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->unsignedDecimal('balance')->default(0);
             $table->string('skin')->default('skins/b84ac9a32c374ef1.png');
+            $table->datetime('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
             $table->timestamps();
         });
     }

@@ -36,9 +36,8 @@ nav {
 }
 
 .nav__content {
-    float: left;
-    width: 300px;
-    height: 100vh; /*880px*/
+    min-width: 300px;
+    height: 880px; /*880px*/
     border-right: 1px solid rgba(0, 0, 0, 0.10);
 }
 
@@ -306,9 +305,8 @@ hr {
 .banner {
     border-radius: 24px;
     height: 215px;
-    background: url("../images/background_banner.svg"), #000;
-    background-position: center;
-    background-size: cover;
+    background: #000 url("../images/background_banner.svg") center;
+    background-size: contain;
 }
 #skin_container {
     width: 100%;

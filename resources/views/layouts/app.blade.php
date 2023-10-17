@@ -18,9 +18,12 @@
 </head>
 <body>
 @include('layouts.navCabinet')
-<x-error/>
-<div class="float-left mt-[25px] ml-[25px]">
-    @yield('content')
+<div class="flex">
+    <x-left-menu/>
+    <x-error/>
+    <div class="w-full mt-[25px] pl-[25px] pr-[25px]">
+        @yield('content')
+    </div>
 </div>
 </body>
 </html>

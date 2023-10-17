@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>Последняя активность</td>
-                        <th>192.0.0.1</th>
+                        <th>{{ auth()->user()->last_login_ip }}</th>
                     </tr>
                     </tbody>
                 </table>
