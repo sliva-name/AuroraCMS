@@ -349,6 +349,7 @@ hr {
     font-weight: 500;
     line-height: normal;
     overflow: hidden;
+    position: relative;
 }
 
 .progress {
