@@ -275,12 +275,15 @@ hr {
     fill: #4f46e5;
 }
 .profile__block {
+    width: 100%;
     border-radius: 23px;
     background: #FFF;
     padding: 58px 52px;
+    max-width: 930px;
 }
 
 .profile__info {
+    width: 507px;
     color: #000;
     font-size: 16px;
     font-style: normal;
@@ -290,6 +293,8 @@ hr {
 .table__info tr th{
     border-radius: 3px;
     background: #F6F7FA;
+    font-weight: 500;
+    padding: 10px;
 }
 .title_page {
     color: #000;
@@ -303,16 +308,118 @@ hr {
     fill: #fff;
 }
 .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 24px;
     height: 215px;
-    background: #000 url("../images/background_banner.svg") center;
+    background: #000 url("../images/background_banner.svg") bottom no-repeat;
     background-size: contain;
 }
+
+.banner__header {
+    background: linear-gradient(270deg, #4557F4 10.06%, #3EC732 97.19%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.banner__text {
+    margin-top: 10px;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.banner__button {
+    margin-top: 30px;
+    border-radius: 43px;
+    background: #4557F4;
+    color: #FFF;
+    padding: 10px 115px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    overflow: hidden;
+}
+
+.progress {
+    margin-top: 13px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.50);
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.progress p span {
+    color: #4557F4;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+.progress p {
+    color: #CFCDE0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.progress_bar {
+    border-radius: 9px;
+    background: #CFCDE0;
+    min-width: 230px;
+    margin-top: 12px;
+    height: 7px;
+}
+
+.bar {
+    height: 7px;
+    width: 80%;
+    background: #4557F4;
+    border-radius: 4px;
+}
+
 #skin_container {
-    width: 100%;
-    height: 250px;
+    width: 507px;
+    height: 310px;
     border-radius: 24px;
     margin-bottom: 15px;
+}
+
+.status_vip {
+    max-width: 280px;
+    width: 100%;
+    border-radius: 24px;
+    background: rgba(69, 87, 244, 0.10) url("../images/status_bg.png") bottom no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status_position {
+    color: #4557F4;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .button {
