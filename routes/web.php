@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/install', [\App\Http\Controllers\InstallController::class, 'index'])->name('install.index');
+Route::post('/install-app', [\App\Http\Controllers\InstallController::class, 'install'])->name('install.install');
+
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/cabinet', [CabinetController::class, 'index'])->name('cabinet.index');
     Route::post('/cabinet/skin/upload', [CabinetController::class, 'skinUpload'])->name('cabinet.skin.upload');

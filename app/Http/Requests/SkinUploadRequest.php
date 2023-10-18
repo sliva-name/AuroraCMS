@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Validator;
+use Response;
 
 class SkinUploadRequest extends FormRequest
 {
@@ -26,5 +27,12 @@ class SkinUploadRequest extends FormRequest
         return [
             'skin' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:2048']
         ];
+    }
+
+    public function failedValidation(Validator|\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'errors' => $validator->errors(),
+        ], 400));
     }
 }

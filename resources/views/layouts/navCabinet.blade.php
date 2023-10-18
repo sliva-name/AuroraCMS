@@ -1,6 +1,6 @@
 <nav>
     <div class="container">
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
             <div class="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="38" viewBox="0 0 100 38" fill="none">
                     <g clip-path="url(#clip0_1_1683)">
@@ -22,32 +22,35 @@
                     </defs>
                 </svg>
             </div>
-            <div class="profile">
-                <button class="notifications">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <g clip-path="url(#clip0_125_157)">
-                            <path d="M12 4.73529C9.75 4.73529 5.25 6.07647 5.25 11.4412V15.5997C5.25 15.7994 5.17031 15.9909 5.02859 16.1317L4.2905 16.865C3.81564 17.3367 4.14972 18.1471 4.81909 18.1471H8.625M12 4.73529C17.4 4.73529 18.75 9.20588 18.75 11.4412V15.5997C18.75 15.7994 18.8297 15.9909 18.9714 16.1317L19.7095 16.865C20.1844 17.3367 19.8503 18.1471 19.1809 18.1471H15.375M12 4.73529V2.5M8.625 18.1471C8.625 19.2647 9.3 21.5 12 21.5C14.7 21.5 15.375 19.2647 15.375 18.1471M8.625 18.1471H15.375" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_125_157">
-                                <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <span class="count">0</span>
-                </button>
-                <div class="avatar">
-                    <canvas id="skin_header" data="{{ auth()->user()->skin }}"></canvas>
-                    <div class="flex flex-col">
-                        <div class="profile__name">
-                            {{ auth()->user()->name }}
-                        </div>
-                        <div class="profile__email">
-                            {{ auth()->user()->email }}
+            @auth()
+                <div class="profile">
+                    <button class="notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_125_157)">
+                                <path d="M12 4.73529C9.75 4.73529 5.25 6.07647 5.25 11.4412V15.5997C5.25 15.7994 5.17031 15.9909 5.02859 16.1317L4.2905 16.865C3.81564 17.3367 4.14972 18.1471 4.81909 18.1471H8.625M12 4.73529C17.4 4.73529 18.75 9.20588 18.75 11.4412V15.5997C18.75 15.7994 18.8297 15.9909 18.9714 16.1317L19.7095 16.865C20.1844 17.3367 19.8503 18.1471 19.1809 18.1471H15.375M12 4.73529V2.5M8.625 18.1471C8.625 19.2647 9.3 21.5 12 21.5C14.7 21.5 15.375 19.2647 15.375 18.1471M8.625 18.1471H15.375" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_125_157">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span class="count">0</span>
+                    </button>
+                    <div class="avatar">
+                        <canvas id="skin_header" data="{{ auth()->user()->skin }}"></canvas>
+                        <div class="flex flex-col">
+                            <div class="profile__name">
+                                {{ auth()->user()->name }}
+                            </div>
+                            <div class="profile__email">
+                                {{ auth()->user()->email }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endauth
+
         </div>
     </div>
 </nav>
