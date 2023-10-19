@@ -9,6 +9,14 @@ body {
     font-family: Inter, sans-serif;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px black inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
 .hr_menu {
     border-top: 1px solid #0000001a !important;
     margin-top: 3px;

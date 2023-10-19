@@ -21,11 +21,12 @@ class InstallController extends Controller
 
         $dbType = $request->input('db_type');
         $dbHost = $request->input('db_host');
+        $dbPort = $request->input('db_port') ?? 3306;
         $dbName = $request->input('db_name');
         $dbUser = $request->input('db_user');
         $dbPassword = $request->input('db_password');
 
-        $service->installDB($dbType, $dbHost, $dbName, $dbUser, $dbPassword);
+        $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
 
         Artisan::call('migrate');
         Artisan::call('db:seed');
