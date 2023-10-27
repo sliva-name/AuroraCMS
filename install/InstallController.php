@@ -3,7 +3,6 @@
 namespace Install;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Install\Requests\InstallRequest;
 use Install\Services\Install;
