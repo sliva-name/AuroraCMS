@@ -28,13 +28,11 @@ class InstallController extends Controller
 
         $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
 
-
-
         //$adminName = $request->input('admin_name'); TODO Написать создание администратора после интеграции с moonshine2
         //$adminEmail = $request->input('admin_email');
         //$adminPassword = Hash::make($request->input('admin_password'));
 
-        //$service->installApp(); TODO Раскомментировать строчку оптимизации приложения
+        //$service->installApp(); TODO Эту строчку перенести в отдельную функцию production
 
         File::deleteDirectory(base_path('install'));
 
