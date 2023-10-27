@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cabinet\CabinetController;
 use App\Http\Controllers\Post\PostController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Install\InstallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/install', [\App\Http\Controllers\InstallController::class, 'index'])->name('install.index');
-Route::post('/install-app', [\App\Http\Controllers\InstallController::class, 'install'])->name('install.install');
+if (file_exists(base_path('install'))){
+    Route::get('/', [InstallController::class, 'index'])->name('install.index');
+    Route::post('/install', [InstallController::class, 'install'])->name('install.install');
+}
+
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/cabinet', [CabinetController::class, 'index'])->name('cabinet.index');

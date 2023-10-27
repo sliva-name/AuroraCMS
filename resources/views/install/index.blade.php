@@ -156,7 +156,7 @@
         font-weight: 700;
         border: none;
         display: flex;
-        width: 600px;
+        width: 100%;
         height: 50px;
         padding: 15px 20px;
         flex-direction: column;
@@ -196,6 +196,9 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+    }
+    .button_install:hover{
+        background: #6070FD;
     }
 </style>
 <script>

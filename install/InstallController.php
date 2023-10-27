@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Install;
 
-use App\Http\Requests\InstallRequest;
-use App\Services\Install;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+use Install\Requests\InstallRequest;
+use Install\Services\Install;
 
 class InstallController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('install.index');
     }
 
-    public function install(InstallRequest $request, Install $service)
+    public function install(InstallRequest $request, Install $service): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $request->validated();
 
@@ -28,18 +28,15 @@ class InstallController extends Controller
 
         $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
 
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
+
 
         //$adminName = $request->input('admin_name'); TODO Написать создание администратора после интеграции с moonshine2
         //$adminEmail = $request->input('admin_email');
         //$adminPassword = Hash::make($request->input('admin_password'));
 
+        //$service->installApp(); TODO Раскомментировать строчку оптимизации приложения
 
-
-        /*
-         * TODO Принять меры защиты по окончанию установки (ключ авторизации или удаление файлов установки)
-         */
+        File::deleteDirectory(base_path('install'));
 
         return view('install.complete');
     }
