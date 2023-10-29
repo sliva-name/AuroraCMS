@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $skin
  * @property $balance
  * @property $last_login_ip
+ * @property $moonshine_user_role_id
  */
 class User extends Authenticatable
 {

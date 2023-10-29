@@ -4,6 +4,7 @@ namespace Install;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Install\Requests\InstallRequest;
 use Install\Services\Install;
 
@@ -19,21 +20,23 @@ class InstallController extends Controller
         $request->validated();
 
         $dbType = $request->input('db_type');
-        $dbHost = $request->input('db_host');
+        $dbHost = $request->input('db_host') ?? '127.0.0.1';
         $dbPort = $request->input('db_port') ?? 3306;
         $dbName = $request->input('db_name');
         $dbUser = $request->input('db_user');
         $dbPassword = $request->input('db_password');
 
+        $adminEmail = $request->input('admin_email');
+        $adminName = $request->input('admin_name');
+        $adminPassword = $request->input('admin_password');
+
+        $appName = $request->input('app_name');
+
         $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
+        $service->createAdmin($adminEmail, $adminName, $adminPassword);
+        $service->installApp($appName);
 
-        //$adminName = $request->input('admin_name'); TODO Написать создание администратора после интеграции с moonshine2
-        //$adminEmail = $request->input('admin_email');
-        //$adminPassword = Hash::make($request->input('admin_password'));
 
-        //$service->installApp(); TODO Эту строчку перенести в отдельную функцию production
-
-        File::deleteDirectory(base_path('install'));
 
         return view('install.complete');
     }

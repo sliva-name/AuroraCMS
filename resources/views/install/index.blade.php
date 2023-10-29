@@ -113,8 +113,8 @@
                     <div class="content-install">
                         <div class="flex flex-col gap-[30px]">
                             <div class="input">
-                                <label class="label" for="data1">Email</label>
-                                <input id="data1" type="text" name="data1" class="input_install" placeholder="admin@gmail.com" value="{{ old('data1') }}">
+                                <label class="label" for="app_name">Название сайта</label>
+                                <input id="app_name" type="text" name="app_name" class="input_install" placeholder="AuroraCMS" value="{{ old('app_name') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="data2">Имя пользователя</label>
