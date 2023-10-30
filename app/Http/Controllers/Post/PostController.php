@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::with('likes')->paginate(10);
+        $posts = Post::with('likes')->orderByDesc('id')->paginate(10);
         return view('post.news', compact('posts'));
     }
 

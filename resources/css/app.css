@@ -170,6 +170,10 @@ nav {
     border-radius: 9px;
 }
 
+.pagination {
+    max-width: 950px;
+}
+
 .exit {
     background: rgba(255, 0, 0, 0.10) !important;
     color: #F00 !important;

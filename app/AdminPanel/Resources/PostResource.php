@@ -8,6 +8,7 @@ use App\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 
+use MoonShine\Decorations\Grid;
 use MoonShine\Fields\Relationships\HasMany;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
@@ -27,10 +28,10 @@ class PostResource extends ModelResource
     {
         return [
             Block::make([
-                ID::make()->sortable(),
+                ID::make()->sortable()->sortActive(),
                 Text::make('Заголовок', 'title'),
                 Textarea::make('Текст поста', 'text'),
-                Text::make('Лайки', 'likes', fn($item) => $item->likes()->count())->badge('green')
+                Text::make('Лайки', 'likes', fn($item) => $item->likes->count())->badge('green')
             ]),
         ];
     }
