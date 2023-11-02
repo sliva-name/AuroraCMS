@@ -1,0 +1,120 @@
+.title_auth{
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.question{
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+.answer {
+    color: #4557F4;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.answer:hover {
+    color: #000;
+}
+.input_auth {
+    display: flex;
+    width: 600px;
+    height: 50px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: #FFF;
+    border: none;
+}
+.input_auth::placeholder {
+    color: #A19FA5;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.reset__password {
+    margin-top: 25px;
+    align-self: end;
+    color: #4557F4;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.agreement__checkbox{
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 14px;
+}
+.agreement__link{
+    color: #4557F4;
+}
+.agreement__link:hover{
+    text-underline-offset: 3px;
+    text-decoration: underline;
+}
+.images__container{
+    height: 540px;
+}
+.desktop__image{
+    width: 876px;
+    height: 470px;
+    border-radius: 18px;
+    border: 10px solid #FFF;
+}
+.shape{
+    width: 124px;
+    height: 199px;
+    transform: rotate(23deg);
+    border-radius: 23px;
+    border: 4px solid #FFF;
+    bottom: 0;
+    z-index: -1;
+    left: 27px;
+}
+.mobile__image{
+    width: 125px;
+    height: 226px;
+    border-radius: 18px;
+    border: 5px solid #000;
+    bottom: 0;
+    left: 200px;
+    overflow: hidden;
+}
+.mobile__brow{
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    border-radius: 17px;
+    background: #000;
+    top: 4px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.button_auth {
+    margin-top: 49px;
+    color: #EBEBEC;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    width: 100%;
+    padding: 20px 0 20px 0;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #4557F4;
+    transition: ease-in-out;
+}
+.button_auth:hover{
+    background: #6070FD;
+}
