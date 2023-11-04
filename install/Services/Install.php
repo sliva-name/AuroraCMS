@@ -18,14 +18,14 @@ class Install
         ]);
 
         Artisan::call('migrate');
-        Artisan::call('db:seed');
+        //Artisan::call('db:seed');
     }
     public function createAdmin(string $adminEmail, string $adminName, string $adminPassword): void
     {
         Artisan::call('moonshine:user', [
-            'username' => $adminEmail,
-            'name' => $adminName,
-            'password' => $adminPassword,
+            '--username' => $adminEmail,
+            '--name' => $adminName,
+            '--password' => $adminPassword
         ]);
     }
     public function installApp(string $appName): void

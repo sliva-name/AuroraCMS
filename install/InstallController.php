@@ -3,19 +3,18 @@
 namespace Install;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
+use Exception;
 use Install\Requests\InstallRequest;
 use Install\Services\Install;
 
 class InstallController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index()
     {
         return view('install.index');
     }
 
-    public function install(InstallRequest $request, Install $service): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function install(InstallRequest $request, Install $service)
     {
         $request->validated();
 
@@ -32,9 +31,18 @@ class InstallController extends Controller
 
         $appName = $request->input('app_name');
 
-        $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
-        $service->createAdmin($adminEmail, $adminName, $adminPassword);
-        $service->installApp($appName);
+        try {
+            $service->installDB($dbType, $dbHost, $dbPort, $dbName, $dbUser, $dbPassword);
+            $service->createAdmin($adminEmail, $adminName, $adminPassword);
+            //$service->installApp($appName);
+            /*
+             * TODO сделать полную замену env и удалять ошибку из сессии (session()->forget('error');)
+             * TODO сделать параметр с запуском --no-reload, если не получится единоразово всё заменить в env
+             */
+        } catch (Exception $e) {
+            session(['error' => $e->getMessage()]);
+            return to_route('install.index');
+        }
 
 
 

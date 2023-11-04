@@ -33,6 +33,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     ->translatable(),
                 MenuItem::make('moonshine::ui.resource.role_title', new MoonShineUserRoleResource())
                     ->translatable(),
+//                MenuItem::make('Настройки сайта', new MoonShineUserRoleResource())
+//                    ->translatable(),
             ])->translatable(),
             MenuGroup::make('Контент', [
                 MenuItem::make('Новости', new PostResource())->icon('heroicons.pencil-square')
