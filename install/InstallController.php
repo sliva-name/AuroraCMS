@@ -4,6 +4,7 @@ namespace Install;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Support\Facades\Artisan;
 use Install\Requests\InstallRequest;
 use Install\Services\Install;
 
