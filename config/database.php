@@ -19,6 +19,7 @@ return [
 
     'default' => $settings->DB_CONNECTION,
 
+
     /*
     |--------------------------------------------------------------------------
     | Database Connections
