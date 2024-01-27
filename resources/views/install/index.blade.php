@@ -29,25 +29,37 @@
                         <p class="description">Проверка требований к серверу</p>
                     </div>
                     <div class="content-install">
+                        @if($validRequirementsContainFalse)
+                            <div class="flex gap-4 items-center bg-red-500 p-4 error-handler">
+                                <div class="icon_error">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" viewBox="0 0 24 24" fill="none">
+                                        <path class="stroke-white"  d="M16 8L8 16M8.00001 8L16 16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="flex flex-col">
+                                    <h1 class="text-lg text-white bold">Установите необходимые расширения на сервер для нормальной работы приложения</h1>
+                                </div>
+                            </div>
+                        @endif
                             <div class="flex flex-col gap-[20px]">
-                                @foreach($validRequirements as $key => $validRequirement)
+                                @foreach($validRequirements as $validRequirement)
                                 <div class="flex items-center gap-[10px]">
-                                        @if(in_array(true, $validRequirement))
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-green-500" width="20px" height="20px" viewBox="0 0 24 24">
+                                        @if($validRequirement->loaded)
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-green-500" width="24px" height="24px" viewBox="0 0 24 24">
                                                 <g>
                                                     <path fill="none" d="M0 0h24v24H0z"/>
                                                     <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/>
                                                 </g>
                                             </svg>
                                             <div class="require_rules">
-                                                {{ key($validRequirement) }}
+                                                {{ $validRequirement->extension }}
                                             </div>
                                         @else
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                                                 <path class="stroke-red-500"  d="M16 8L8 16M8.00001 8L16 16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                             <div class="require_rules">
-                                                {{ key($validRequirement) }}
+                                                {{ $validRequirement->extension }}
                                             </div>
                                         @endif
                                 </div>
@@ -57,7 +69,7 @@
                     <button type="submit" id="step1" class="button_install">Далее</button>
                 </div>
 
-                <div class="w-[600px] hidden step2">
+                <div class="lg:w-[600px] w-full hidden step2">
                     <div class="flex justify-between">
                         <div class="flex-col flex">
                             <h1 class="title_page">Установка 2/5</h1>
@@ -71,10 +83,22 @@
                     </div>
 
                     <div class="content-install">
+                        @if($validPermissionsContainFalse)
+                            <div class="flex gap-4 items-center bg-red-500 p-4 error-handler">
+                                <div class="icon_error">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" viewBox="0 0 24 24" fill="none">
+                                        <path class="stroke-white"  d="M16 8L8 16M8.00001 8L16 16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="flex flex-col">
+                                    <h1 class="text-lg text-white bold">Необходимо установить права доступа папкам на 0775</h1>
+                                </div>
+                            </div>
+                        @endif
                         <div class="flex flex-col gap-[20px]">
-                            @foreach($validPermissions as $key => $validPermission)
+                            @foreach($validPermissions as $validPermission)
                                 <div class="flex items-center gap-[10px]">
-                                    @if(in_array(true, $validPermission))
+                                    @if($validPermission->permissions)
                                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-green-500" width="20px" height="20px" viewBox="0 0 24 24">
                                             <g>
                                                 <path fill="none" d="M0 0h24v24H0z"/>
@@ -82,17 +106,17 @@
                                             </g>
                                         </svg>
                                         <div class="require_rules">
-                                            {{ key($validPermission) }}
+                                            {{ $validPermission->folder }}
                                         </div>
                                         <div class="rounded p-1 bg-gray-200 text-gray-700">
-                                            {{ $validPermission[key($validPermission)][1] }}
+                                            {{ $validPermission->octal_permissions }}
                                         </div>
                                     @else
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
                                             <path class="stroke-red-500"  d="M16 8L8 16M8.00001 8L16 16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                         <div class="require_rules">
-                                            {{ key($validPermission) }}
+                                            {{ $validPermission->folder }}
                                         </div>
                                     @endif
                                 </div>
@@ -106,7 +130,7 @@
                     <div class="flex justify-between">
                         <div class="flex-col flex">
                             <h1 class="title_page">Установка 3/5</h1>
-                            <p class="description">Настройка подключения к базе данныхк</p>
+                            <p class="description">Настройка подключения к базе данных</p>
                         </div>
                         <button id="step3_back" class="flex justify-center items-center w-[87px]" style="border-radius: 12px;background: #D9D9D9;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
@@ -236,6 +260,10 @@
     }
     .content-install{
         padding: 49px 0;
+    }
+    .error-handler{
+        border-radius: 12px;
+        margin-bottom: 20px;
     }
     .input_install{
         font-weight: 700;

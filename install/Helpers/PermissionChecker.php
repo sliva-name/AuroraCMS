@@ -9,15 +9,16 @@ class PermissionChecker
 {
     public function checkPermission(array $folders): Collection
     {
-        $results = [];
-
-        foreach ($folders as $folder) {
-              $results[] = [$folder => [$this->permissionFolderCheck($folder), substr(sprintf('%o', fileperms($folder)), -4)]];
-        }
-        return collect($results);
+        return collect($folders)->map(function ($folder) {
+            return (object) [
+                'folder' => $folder,
+                'permissions' => $this->permissionFolderCheck($folder),
+                'octal_permissions' => substr(sprintf('%o', fileperms($folder)), -4),
+            ];
+        });
     }
     private function permissionFolderCheck($folder): bool
     {
-        return File::exists($folder) && File::isReadable($folder) && File::isWritable($folder);
+        return File::isReadable($folder) && File::isWritable($folder);
     }
 }

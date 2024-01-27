@@ -8,12 +8,12 @@ class RequirementsChecker
 {
     public function checkExtensions(array $extensions): \Illuminate\Support\Collection
     {
-        $results = [];
-
-        foreach ($extensions as $extension) {
-           $results[] = [$extension => extension_loaded($extension)];
-        }
-        return collect($results);
+        return collect($extensions)->map(function ($extension) {
+            return (object) [
+                'extension' => $extension,
+                'loaded' => extension_loaded($extension)
+            ];
+        });
     }
 
 }

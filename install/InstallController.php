@@ -17,8 +17,24 @@ class InstallController extends Controller
     {
         $validRequirements = $service->installRequirementsCheck(new RequirementsChecker());
         $validPermissions = $service->installPermissionFolderCheck(new PermissionChecker());
+        $validRequirementsContainFalse = false;
+        $validPermissionsContainFalse = false;
 
-        return view('install.index', compact('validRequirements', 'validPermissions'));
+        foreach ($validRequirements as $validRequirement) {
+            if (!$validRequirement->loaded) {
+                $validRequirementsContainFalse = true;
+                break;
+            }
+        }
+
+        foreach ($validPermissions as $validPermission) {
+            if (!$validPermission->permissions) {
+                $validRequirementsContainFalse = true;
+                break;
+            }
+        }
+
+        return view('install.index', compact('validRequirements', 'validPermissions', 'validRequirementsContainFalse', 'validPermissionsContainFalse'));
     }
 
     public function install(InstallRequest $request, Install $service)

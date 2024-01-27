@@ -20,9 +20,9 @@ class Install
         ]);
     }
 
-    public function installPermissionFolderCheck(PermissionChecker $permissionFolderCheker): \Illuminate\Support\Collection
+    public function installPermissionFolderCheck(PermissionChecker $permissionFolderChecker): \Illuminate\Support\Collection
     {
-        return $permissionFolderCheker->checkPermission([
+        return $permissionFolderChecker->checkPermission([
             storage_path('framework'),
             storage_path('logs'),
             base_path('bootstrap/cache'),
