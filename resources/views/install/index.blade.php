@@ -144,23 +144,23 @@
                             @csrf
                             <div class="input">
                                 <label class="label" for="db_host">Хост базы данных</label>
-                                <input id="db_host" type="text" name="db_host" class="input_install" placeholder="localhost" value="{{ old('db_host') }}">
+                                <input id="db_host" type="text" autocomplete="on" autofocus name="db_host" class="input_install" placeholder="localhost" value="{{ old('db_host') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="db_port">Порт базы данных</label>
-                                <input id="db_port" type="text" name="db_port" class="input_install" placeholder="3306" value="{{ old('db_port') }}">
+                                <input id="db_port" type="text" autocomplete="on" autofocus name="db_port" class="input_install" placeholder="3306" value="{{ old('db_port') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="db_name">Имя базы данных</label>
-                                <input id="db_name" type="text" name="db_name" class="input_install" placeholder="aurora" value="{{ old('db_name') }}">
+                                <input id="db_name" type="text" autocomplete="on" autofocus name="db_name" class="input_install" placeholder="aurora" value="{{ old('db_name') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="db_user">Пользователь базы данных</label>
-                                <input id="db_user" type="text" name="db_user" class="input_install" placeholder="Пользователь" value="{{ old('db_user') }}">
+                                <input id="db_user" type="text" autocomplete="on" autofocus name="db_user" class="input_install" placeholder="Пользователь" value="{{ old('db_user') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="db_password">Пароль базы данных</label>
-                                <input id="db_password" type="password" name="db_password" class="input_install" placeholder="Пароль" value="{{ old('db_password') }}">
+                                <input id="db_password" type="password" autocomplete="on" autofocus name="db_password" class="input_install" placeholder="Пароль" value="{{ old('db_password') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="db_type">Тип базы данных</label>
@@ -191,15 +191,15 @@
                         <div class="flex flex-col gap-[30px]">
                             <div class="input">
                                 <label class="label" for="admin_email">Email</label>
-                                <input id="admin_email" type="text" name="admin_email" class="input_install" placeholder="admin@gmail.com" value="{{ old('admin_email') }}">
+                                <input id="admin_email" type="text" autocomplete="on" autofocus name="admin_email" class="input_install" placeholder="admin@gmail.com" value="{{ old('admin_email') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="admin_name">Имя пользователя</label>
-                                <input id="admin_name" type="text" name="admin_name" class="input_install" placeholder="Админ" value="{{ old('admin_name') }}">
+                                <input id="admin_name" type="text" autocomplete="on" autofocus name="admin_name" class="input_install" placeholder="Админ" value="{{ old('admin_name') }}">
                             </div>
                             <div class="input">
                                 <label class="label" for="admin_password">Пароль пользователя</label>
-                                <input id="admin_password" type="password" name="admin_password" class="input_install" placeholder="Пароль" value="{{ old('admin_password') }}">
+                                <input id="admin_password" type="password" autocomplete="on" autofocus name="admin_password" class="input_install" placeholder="Пароль" value="{{ old('admin_password') }}">
                             </div>
                         </div>
                     </div>
